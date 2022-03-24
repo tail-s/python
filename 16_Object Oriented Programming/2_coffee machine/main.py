@@ -2,22 +2,32 @@ from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
-def main():
-    select_menu = input(f"What would you like? ({Menu().get_items()}) : ")
-    print(select_menu)
+# 객체 생성
+money_machine = MoneyMachine()
+coffee_maker = CoffeeMaker()
+menu = Menu()
 
-    if select_menu in Menu().get_items():
-        CoffeeMaker().is_resource_sufficient(Menu().find_drink(select_menu))
-        pass
+is_on = True
 
-    elif select_menu == "report":
-        CoffeeMaker().report()
-        MoneyMachine().report()
+while is_on:
+    options = menu.get_items()
+    choice = input(f"What owould you like? ({options}) : ")
+    if choice == "off":
+        is_on = False
 
-    elif select_menu == "off":
-        pass
+    elif choice == "report":
+        coffee_maker.report()
+        money_machine.report()
+
+    elif choice in options:
+        drink = menu.find_drink(choice)
+        is_enough_ingredients = coffee_maker.is_resource_sufficient(drink)
+        is_enough_successful = money_machine.make_payment(drink.cost)
+
+        if is_enough_successful and is_enough_ingredients:
+            coffee_maker.make_coffee(drink)
+        # if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
+        #         coffee_maker.make_coffee(drink)
 
     else:
-        print("Please, Check your order again.")
-
-main()
+        print("Please, Check your order again.") # 어렵다 어려워
