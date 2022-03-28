@@ -18,4 +18,6 @@ for question in question_data: # 그냥 하나씩 넣어서
     question_bank.append(q_set)
 
 quiz = QuizBrain(question_bank)
-quiz.next_question()
+
+while quiz.still_has_questions():
+    quiz.next_question()
