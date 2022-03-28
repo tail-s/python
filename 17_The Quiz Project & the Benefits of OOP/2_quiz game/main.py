@@ -12,8 +12,8 @@ question_bank = []
 #     question_bank.append(data_i)
 
 for question in question_data: # 그냥 하나씩 넣어서
-    q_text = question["text"]
-    q_answer = question["answer"]
+    q_text = question["question"]
+    q_answer = question["correct_answer"]
     q_set = Question(q_text, q_answer)
     question_bank.append(q_set)
 
