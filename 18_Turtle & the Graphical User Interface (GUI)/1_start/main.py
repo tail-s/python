@@ -42,12 +42,25 @@ tim.color("green")
 # import heroes
 # print(heroes.gen())
 
-angle = 360
-for i in range(3, 10):
-    ang = angle / i
-    for j in range(i):
+# angle = 360
+# for i in range(3, 10):
+#     ang = angle / i
+#     for j in range(i):
+#         tim.forward(100)
+#         tim.right(ang)
+import random
+
+def draw_shape(num_sides):
+    angle = 360 / num_sides
+    for _ in range(num_sides):
         tim.forward(100)
-        tim.right(ang)
+        tim.right(angle)
+
+colours = ["red", "black", "blue", "violet", "yellow", "orange"]
+
+for shape_side_n in range(3, 11):
+    tim.color(random.choice(colours))
+    draw_shape(shape_side_n)
 
 screen = Screen()
 screen.exitonclick()
