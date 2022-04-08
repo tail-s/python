@@ -35,7 +35,7 @@ while is_race_on:
         mov = random.randint(0, 10)
         turtle.forward(mov)
 
-
+screen.exitonclick()
 
 
 # def fowards():
@@ -58,5 +58,4 @@ while is_race_on:
 # screen.onkey(key="a", fun=counter_clockwise)
 # screen.onkey(key="d", fun=clockwise)
 # screen.onkey(key="c", fun=clear_drawing)
-
-screen.exitonclick()
+# screen.exitonclick()
