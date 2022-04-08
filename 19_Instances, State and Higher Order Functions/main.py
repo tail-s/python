@@ -6,16 +6,18 @@ is_race_on = False
 
 screen = Screen()
 screen.setup(width=500, height=400) # 숫자만 사용해도 됨
-user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color : ")
-colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+colors = ["red", "orange", "black", "green", "blue", "purple"]
 all_turtles = []
+
+user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color (red/orange/black/green/blue/purple) : ")
+print(f"Your Choice : {user_bet}")
 
 for turtle_index in range(0, 6):
     new_turtle = Turtle(shape="turtle")
     new_turtle.color(colors[turtle_index])
     new_turtle.penup()
-    new_turtle.goto(x=-230, y=-150 + turtle_index * 25)
-    all_turtles.append(all_turtles)
+    new_turtle.goto(x=-230, y=-100 + turtle_index * 25)
+    all_turtles.append(new_turtle)
 
 if user_bet:
     is_race_on = True
@@ -23,8 +25,15 @@ if user_bet:
 while is_race_on:
 
     for turtle in all_turtles:
-        rand_mov = random.randint(0, 10)
-        # turtle.forward(rand_mov) rand_mov가 왜 list? 해결중
+        if turtle.xcor() > 230:
+            is_race_on = False
+            if turtle.pencolor() == user_bet:
+                print(f"The winner is {turtle.pencolor()}. You've win!")
+            else:
+                print(f"The winner is {turtle.pencolor()}. You've lost!")
+
+        mov = random.randint(0, 10)
+        turtle.forward(mov)
 
 
 
