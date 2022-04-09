@@ -18,6 +18,7 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 arr = []
 
 for _ in range(nr_letters):
+    # password += random.choice(letters)
     key = random.choice(letters)
     arr.append(key)
 for _ in range(nr_numbers):
