@@ -42,6 +42,8 @@ class CarManager(Turtle):
             new_car.setheading(180)
             new_car.forward(STARTING_MOVE_DISTANCE)
 
-            if new_car.xcor() == -320:
-                new_car.goto(target_x, 320)
+            cars.append(new_car)
+
+        if cars.new_car.xcor() == -320:
+            new_car.goto(target_x, 320)
 
