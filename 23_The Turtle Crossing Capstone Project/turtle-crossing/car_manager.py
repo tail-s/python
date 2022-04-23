@@ -19,7 +19,8 @@ import random
 
 # COLORS = [(163, 209, 243), (247, 199, 221), (167, 247, 209), (252, 236, 205)]
 
-
+MOVE_INCREMENT = 10
+STARTING_MOVE_DISTANCE = 5
 
 class CarManager(Turtle):
 
@@ -27,24 +28,14 @@ class CarManager(Turtle):
         super().__init__()
         self.shape("square")
         self.shapesize(stretch_wid=1, stretch_len=2)
-        # self.colormode(mode=255)
+        self.color(COLORS[random.randint(0, len(COLORS) - 1)])
         self.penup()
-        self.STARTING_MOVE_DISTANCE = 5
-        self.MOVE_INCREMENT = 10
+        self.target_x = random.randint(0, 300)
+        self.target_y = random.randint(-250, 250)
+        self.goto(self.target_x, self.target_y)
+        self.setheading(180)
+        if self.xcor() == -320:
+            self.goto(self.target_x, 320)
 
-    def cars_ready(self):
 
-        cars = []
-        for car in range(0, self.MOVE_INCREMENT):
-            car = CarManager()
-            car.color(COLORS[random.randint(0, len(COLORS) - 1)])
-            target_x = random.randint(0, 300)
-            target_y = random.randint(0, 600)
-            car.goto(target_x, target_y)
-            car.setheading(180)
-            car.forward(self.STARTING_MOVE_DISTANCE)
-            cars.append(car)
-
-            if car.xcor() == -320:
-                car.goto(target_x, 320)
 
