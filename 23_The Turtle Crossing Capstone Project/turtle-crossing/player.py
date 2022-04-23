@@ -24,8 +24,3 @@ class Player(Turtle):
     def down(self):
         new_y = self.ycor() - MOVE_DISTANCE
         self.goto(self.xcor(), new_y)
-
-    def clear(self):
-        if self.ycor() >= FINISH_LINE_Y:
-            self.reset_position()
-

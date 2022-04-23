@@ -31,3 +31,17 @@ class CarManager(Turtle):
         self.color(COLORS[random.randint(0, len(COLORS))])
         self.penup()
 
+    def cars_ready(self):
+
+        for cars in range(0, car.MOVE_INCREMENT):
+            new_car = CarManager()
+            target_x = random.randint(0, 300)
+            target_y = random.randint(0, 600)
+            new_car.goto(target_x, target_y)
+            new_car.setheading(180)
+            new_car.forward(car.STARTING_MOVE_DISTANCE)
+            cars.append(new_car)
+
+            if cars.new_car.xcor() == -320:
+                new_car.goto(target_x, 320)
+
