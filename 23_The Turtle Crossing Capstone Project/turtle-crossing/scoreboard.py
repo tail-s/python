@@ -18,7 +18,7 @@ class Scoreboard(Turtle):
 
     def game_over(self):
         self.goto(0, 0)
-        self.write("Game Over", align=center, font=("Arial", 24, "normal"))
+        self.write("Game Over", align="center", font=("Arial", 24, "normal"))
 
     def increase_level(self):
         self.level += 1
