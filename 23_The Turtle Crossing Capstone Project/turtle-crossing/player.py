@@ -1,6 +1,8 @@
 from turtle import Turtle
 
 STARTING_POSITION = (0, -280)
+MOVE_DISTANCE = 10
+FINISH_LINE_Y = 280
 
 class Player(Turtle):
 
@@ -10,16 +12,18 @@ class Player(Turtle):
         self.setheading(90)
         self.penup()
         self.reset_position()
-        self.MOVE_DISTANCE = 10
-        self.FINISH_LINE_Y = 280
 
     def reset_position(self):
         self.goto(STARTING_POSITION)
 
-    def up(self):
-        new_y = self.ycor() + self.MOVE_DISTANCE
-        self.goto(self.xcor(), new_y)
+    def go_up(self):
+        self.forward(MOVE_DISTANCE)
 
-    def down(self):
-        new_y = self.ycor() - self.MOVE_DISTANCE
-        self.goto(self.xcor(), new_y)
+    def go_down(self):
+        self.backward(MOVE_DISTANCE)
+
+    def is_at_finish_line(self):
+        if self.ycor() > FINISH_LINE_Y:
+            return True
+        else:
+            return False

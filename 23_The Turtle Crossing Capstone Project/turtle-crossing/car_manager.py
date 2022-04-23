@@ -12,30 +12,38 @@
 #
 # print(rgb_colors)
 
-COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-
-from turtle import Turtle
+# COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
+import turtle
 import random
 
-# COLORS = [(163, 209, 243), (247, 199, 221), (167, 247, 209), (252, 236, 205)]
+COLORS = [(163, 209, 243), (247, 199, 221), (167, 247, 209), (252, 236, 205)]
 
 MOVE_INCREMENT = 10
 STARTING_MOVE_DISTANCE = 5
+turtle.colormode(255)
 
-class CarManager(Turtle):
+class CarManager:
 
     def __init__(self):
-        super().__init__()
-        self.shape("square")
-        self.shapesize(stretch_wid=1, stretch_len=2)
-        self.color(COLORS[random.randint(0, len(COLORS) - 1)])
-        self.penup()
-        self.target_x = random.randint(0, 300)
-        self.target_y = random.randint(-250, 250)
-        self.goto(self.target_x, self.target_y)
-        self.setheading(180)
-        if self.xcor() == -320:
-            self.goto(self.target_x, 320)
+        self.cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
+    def create_car(self):
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            new_car = turtle.Turtle("square")
+            new_car.shapesize(stretch_wid=1, stretch_len=2)
+            new_car.penup()
+            new_car.color(random.choice(COLORS))
+            random_y = random.randint(-250, 250)
+            new_car.goto(300, random_y)
+            self.cars.append(new_car)
+
+    def move_cars(self):
+        for car in self.cars:
+            car.backward(self.car_speed)
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
 
 
