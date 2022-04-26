@@ -5,5 +5,5 @@
 #     print(contents)
 #     # file.close() # 파일을 열면 자원을 차지하게 되는데 그 리소스를 해방시키는 것.
 
-with open("my_file.txt", mode="a") as file: # mode = r / w / a ...
-    file.write("\nNew text.")
+with open("my_file_2.txt", mode="w") as file: # mode = r / w / a ...
+    file.write("New text_2.")
