@@ -17,10 +17,11 @@ while game_is_on:
     answer_state = screen.textinput(title=f"{len(ansd_list)}/{len(state_list)} Guess the State", prompt="What's another state's name?").title() # title() 첫 글자를 대문자로
 
     if answer_state == "Exit":
-        missing_states = []
-        for check in state_list:
-            if check not in ansd_list:
-                missing_states.append(check)
+        missing_states = [x for x in state_list if x not in ansd_list]
+        # missing_states = []
+        # for check in state_list:
+        #     if check not in ansd_list:
+        #         missing_states.append(check)
 
                 # see = turtle.Turtle()
                 # see.penup()

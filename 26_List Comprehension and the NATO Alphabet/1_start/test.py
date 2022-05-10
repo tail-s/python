@@ -8,3 +8,10 @@ short_names = [name.upper() for name in names if len(name) > 5]
 
 numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 squared_numbers = [x**2 for x in numbers]
+
+# new_dict = {new_key:new_value for item in list}
+
+# scores = [80, 90, 100, 95, 85, 75]
+import random
+students_scores = {student:random.randint(1, 100) for student in names}
+print(students_scores)
