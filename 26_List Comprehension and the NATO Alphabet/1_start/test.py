@@ -13,5 +13,8 @@ squared_numbers = [x**2 for x in numbers]
 
 # scores = [80, 90, 100, 95, 85, 75]
 import random
+
 students_scores = {student:random.randint(1, 100) for student in names}
-print(students_scores)
+passed_students = {student:score for (student, score) in students_scores.items() if score >= 60}
+
+
